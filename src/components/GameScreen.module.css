@@ -1,0 +1,106 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100dvh;
+  padding: 1rem;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  gap: 1rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 400px;
+  padding: 0.5rem 0;
+}
+
+.scoreLabel {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffd700;
+}
+
+.combo {
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: #ff6584;
+  animation: comboBounce 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-shadow: 0 0 10px currentColor;
+}
+
+/* コンボ5以上：オレンジ */
+.combo5 {
+  color: #ff9500;
+  font-size: 1.5rem;
+  text-shadow: 0 0 16px #ff9500, 0 0 32px #ff6584;
+}
+
+/* コンボ8以上：レインボー */
+.combo8 {
+  font-size: 1.7rem;
+  text-shadow: 0 0 16px #ffd700, 0 0 32px #ff6584;
+  animation: comboBounce 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+             rainbow 0.8s linear infinite;
+}
+
+.qNum {
+  font-size: 1rem;
+  color: #a0aec0;
+}
+
+.progressBg {
+  width: 100%;
+  max-width: 400px;
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.1);
+  overflow: hidden;
+}
+
+.progressBar {
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #6c63ff, #43d9ad);
+  transition: width 0.4s ease;
+}
+
+@keyframes comboBounce {
+  0%   { transform: scale(0.3) translateY(10px); opacity: 0; }
+  60%  { transform: scale(1.3) translateY(-4px); opacity: 1; }
+  80%  { transform: scale(0.9) translateY(2px);  }
+  100% { transform: scale(1)   translateY(0);    opacity: 1; }
+}
+
+@keyframes rainbow {
+  0%   { color: #ff6584; }
+  16%  { color: #ff9500; }
+  33%  { color: #ffd700; }
+  50%  { color: #43d9ad; }
+  66%  { color: #6c63ff; }
+  83%  { color: #ff6584; }
+  100% { color: #ff6584; }
+}
+
+/* タイムアタック: カウントダウンタイマー */
+.timerWrap {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #43d9ad;
+  transition: color 0.3s;
+}
+
+.timerWrap.danger {
+  color: #ff6584;
+  animation: timerPulse 0.5s ease-in-out infinite;
+}
+
+@keyframes timerPulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.15); }
+}

@@ -1,0 +1,124 @@
+.card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  padding: 2.5rem 2rem;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 2px solid rgba(108, 99, 255, 0.3);
+  backdrop-filter: blur(12px);
+  transition: border-color 0.2s, background 0.2s;
+  min-height: 160px;
+}
+
+.correct {
+  border-color: #43d9ad;
+  background: rgba(67, 217, 173, 0.12);
+}
+
+.wrong {
+  border-color: #ff6584;
+  background: rgba(255, 101, 132, 0.12);
+}
+
+.shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+.feedbackBadge,
+.feedbackBadgeWrong {
+  position: absolute;
+  top: -1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.3rem 1rem;
+  border-radius: 999px;
+  animation: popIn 0.25s ease-out;
+}
+
+.feedbackBadge {
+  background: #43d9ad;
+  color: #000;
+}
+
+.feedbackBadgeWrong {
+  background: #ff6584;
+  color: #fff;
+}
+
+.equation {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.num {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #fff;
+}
+
+.op {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #6c63ff;
+  min-width: 2rem;
+  text-align: center;
+}
+
+.eq {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #a0aec0;
+}
+
+.answer {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #a0aec0;
+  min-width: 3rem;
+  text-align: center;
+  border-bottom: 3px solid #6c63ff;
+  padding-bottom: 0.1rem;
+  transition: color 0.1s;
+}
+
+.answerFilled {
+  color: #ffd700;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-10px); }
+  40%       { transform: translateX(10px); }
+  60%       { transform: translateX(-8px); }
+  80%       { transform: translateX(8px); }
+}
+
+@keyframes popIn {
+  from { transform: scale(0.5); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+/* フローティング +1 エフェクト */
+.floatScore {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #ffd700;
+  text-shadow: 0 0 12px rgba(255, 215, 0, 0.8);
+  pointer-events: none;
+  animation: floatUp 0.8s ease-out forwards;
+}
+
+@keyframes floatUp {
+  0%   { opacity: 1; transform: translateY(0) scale(1.2); }
+  60%  { opacity: 1; transform: translateY(-40px) scale(1); }
+  100% { opacity: 0; transform: translateY(-70px) scale(0.8); }
+}
