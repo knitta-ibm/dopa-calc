@@ -86,6 +86,7 @@ export default function App() {
           isTimeAttack={mode === 'time-attack'}
           timeLimit={timeLimit}
           onFinish={handleFinish}
+          onHome={() => setScreen('start')}
         />
       )}
       {screen === 'result' && (

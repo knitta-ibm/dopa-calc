@@ -26,6 +26,7 @@ export default function GameScreen({
   isTimeAttack,
   timeLimit = 60,
   onFinish,
+  onHome,
 }) {
   const [problems] = useState(() => {
     if (externalProblems) return externalProblems
@@ -165,10 +166,19 @@ export default function GameScreen({
           <span key={combo} className={comboClass}>{combo} コンボ！{combo >= 8 ? '🌈' : combo >= 5 ? '🔥' : '💥'}</span>
         )}
 
-        {isTimeAttack
-          ? <span className={styles.scoreLabel}>⭐ {score}</span>
-          : <span className={styles.qNum}>{index + 1} / {total}</span>
-        }
+        <div className={styles.headerRight}>
+          {isTimeAttack
+            ? <span className={styles.scoreLabel}>⭐ {score}</span>
+            : <span className={styles.qNum}>{index + 1} / {total}</span>
+          }
+          <button
+            className={styles.homeBtn}
+            onClick={onHome}
+            aria-label="ホームに戻る"
+          >
+            🏠
+          </button>
+        </div>
       </div>
 
       {/* プログレスバー */}
